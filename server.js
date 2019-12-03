@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 // #3 Serve static content in folder frontend
 app.get("/", function(req, res){
-    res.render('frontent/js/index');
+    res.render('frontend/index');
 });
 // ===============================
 
@@ -35,7 +35,9 @@ router.get('/products', products.getAllProducts);
 router.get('/products/:pid', products.getProductById);
 
 // #4 Complete the routing for POST, PUT, DELETE
-
+router.post('/products',products.addProduct);
+router.put('/products/:pid',products.updateProductById);
+router.delete('/products/:pid',products.deleteProductById);
 // ===============================
 
 
@@ -46,4 +48,4 @@ app.use('/api', cors(), router);
 // #10 Start the server
 app.listen(8080);
 // ===============================
-console.log('Magic happens on http://localhost:8080' + port);
+console.log('Magic happens on http://localhost:' + port);
