@@ -7,7 +7,7 @@ var app = express();
 var cors = require('cors');       
 
 // #2 Add body-parser package to the app
-var bodyparser = require('body-parser');
+var bodyParser = require('body-parser');
 // ===============================
 
 
@@ -18,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // #3 Serve static content in folder frontend
-
+app.get("/", function(req, res){
+    res.render('frontent/js/index');
+});
 // ===============================
 
 
@@ -42,6 +44,6 @@ router.get('/products/:pid', products.getProductById);
 app.use('/api', cors(), router);
 
 // #10 Start the server
-
+app.listen(8080);
 // ===============================
-console.log('Magic happens on http://localhost:' + port);
+console.log('Magic happens on http://localhost:8080' + port);
